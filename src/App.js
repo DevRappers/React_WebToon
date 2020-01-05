@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 import Customer from './components/Customer';
 import Paper from '@material-ui/core/Paper';
@@ -8,33 +9,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import { withStyles } from '@material-ui/styles';
-
-const customers = [
-	{
-		id: 1,
-		image: 'https://placeimg.com/64/64/1',
-		name: '이재준',
-		birthday: '980326',
-		gender: '남자',
-		job: 'developer'
-	},
-	{
-		id: 2,
-		image: 'https://placeimg.com/64/64/2',
-		name: '테스트유저',
-		birthday: '910208',
-		gender: '여자',
-		job: '디자이너'
-	},
-	{
-		id: 3,
-		image: 'https://placeimg.com/64/64/3',
-		name: '이재영',
-		birthday: '950815',
-		gender: '남자',
-		job: '직장인'
-	}
-];
 
 const styles = (theme) => ({
 	root: {
@@ -48,6 +22,21 @@ const styles = (theme) => ({
 });
 
 function App({ classes }) {
+	const [ customers, setCustomers ] = useState();
+
+	const callApi = async () => {
+		const response = await axios.get('/api/customers');
+		setCustomers(response.data);
+	};
+
+	useEffect(() => {
+		callApi();
+	}, []);
+
+	if (!customers) {
+		return <div>로딩중...</div>;
+	}
+
 	return (
 		<Paper className={classes.root}>
 			<Table className={classes.table}>
