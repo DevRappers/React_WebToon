@@ -44,6 +44,12 @@ function App({ classes }) {
 		callApi();
 	}, []);
 
+	const stateRefresh = () => {
+		setCustomers();
+		setCompleted(0);
+		callApi();
+	};
+
 	return (
 		<div>
 			<Paper className={classes.root}>
@@ -75,7 +81,7 @@ function App({ classes }) {
 							})
 						) : (
 							<TableRow>
-								<TableCell colspan="6" align="center">
+								<TableCell colSpan="6" align="center">
 									<CircularProgress
 										className={classes.progress}
 										variant="determinate"
@@ -87,7 +93,7 @@ function App({ classes }) {
 					</TableBody>
 				</Table>
 			</Paper>
-			<CustomerAdd />
+			<CustomerAdd stateRefresh={stateRefresh} />
 		</div>
 	);
 }

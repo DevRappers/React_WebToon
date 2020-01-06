@@ -7,7 +7,7 @@ function Customer({ id, image, name, birthday, gender, job }) {
 		<TableRow>
 			<TableCell>{id}</TableCell>
 			<TableCell>
-				<img src={image} alt="profile" />
+				<img src={image} alt="profile" width={60} height={60} />
 			</TableCell>
 			<TableCell>{name}</TableCell>
 			<TableCell>{birthday}</TableCell>
