@@ -62,6 +62,7 @@ function App({ classes }) {
 							<TableCell>생성일</TableCell>
 							<TableCell>장르</TableCell>
 							<TableCell>작가명</TableCell>
+							<TableCell>설정</TableCell>
 						</TableRow>
 					</TableHead>
 					<TableBody>
@@ -70,6 +71,7 @@ function App({ classes }) {
 								return (
 									<Customer
 										key={c.id}
+										stateRefresh={stateRefresh}
 										id={c.id}
 										image={c.image}
 										name={c.name}

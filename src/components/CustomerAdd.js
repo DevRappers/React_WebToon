@@ -36,6 +36,7 @@ function CustomerAdd({ stateRefresh }) {
 		setFilename('');
 		name.setValue('');
 		createday.setValue('');
+
 		genre.setValue('');
 		author.setValue('');
 	};
